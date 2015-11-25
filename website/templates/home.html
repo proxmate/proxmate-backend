@@ -1,0 +1,387 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home | Unblock internet content and TV from anywhere{% endblock %}
+{% block bodyclass %} homepage {% endblock %}
+
+{% block content %}
+    <section class="teaser">
+
+        <div class="container">
+            <div class="row">
+                <div class="left col-sm-6 wow fadeInLeft">
+                    <div class="centered">
+                        <h1>
+                            Unblock movies, sports, music, social media, news and more from all around the world
+                        </h1>
+
+                        <p class="home-plugin-container cta-wrapper">
+                            <a href="#" class="btn btn-lg btn-cta call-to-action-button" data-gaeventid="cta_home_1">
+                                14 day free trial
+                            </a>
+                        </p>
+
+                        <p>
+                            <span class="no-credit-card">(no credit card needed)</span>
+                        </p>
+
+                        <p class="browsers">
+                            <img src="{% static "img/browsers/chrome.svg" %}" alt=""/>
+                            <img src="{% static "img/browsers/mozilla.svg" %}" alt=""/>
+                            <img src="{% static "img/browsers/opera.svg" %}" alt=""/><br/>
+                            <span>Chrome</span>
+                            <span>Firefox</span>
+                            <span>Opera</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="right col-sm-6 wow fadeInRight">
+                    <div class="centered">
+                        <img class="couch" src="{% static "img/illustrations/tv-couch.png" %}" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow-lower-wrapper">
+            <p class="text">
+                <span>Learn more</span>
+            </p>
+
+            <p class="arrow">
+                <span class="image" data-section="intro"></span>
+            </p>
+        </div>
+
+    </section>
+
+    <section class="intro white">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>
+                        So easy you can set up in seconds<br/>
+                        <span class="line"></span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-sm-6 step fadeInLeft wow" data-wow-duration="1s" data-step="1">
+                    <h2>1</h2>
+
+                    <p class="subtitle">
+                        Click the ‘free trial’ button and enter your email to set up a free account<br/>
+                        (No credit card required)</p>
+
+                    <p>
+                        <img src="{% static "img/illustrations/step1.svg" %}" alt="step 1"/>
+                    </p>
+                </div>
+                <div class="col-md-4 col-sm-6 step fadeInDown wow" data-wow-duration="1s" data-step="2">
+                    <h2>2</h2>
+
+                    <p class="subtitle">Click on the link in the email we'll send you to verify your account</p>
+
+                    <p>
+                        <img src="{% static "img/illustrations/step2.svg" %}" alt="step 2"/>
+                    </p>
+                </div>
+                <div class="col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3 step fadeInRight wow"
+                     data-wow-duration="1s" data-step="3">
+                    <h2>3</h2>
+
+                    <p class="subtitle">Simply visit the website of any of our supported channels to access your
+                        favourite content. That’s it!</p>
+
+                    <p>
+                        <img src="{% static "img/illustrations/step3.svg" %}" alt="step 3"/>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <p class="subtitle" style="width:100%!important">
+                        Proxmate lets you access the most popular 200+ channels from around the world including Netflix,
+                        Hulu, Pandora, BBC, ITV, 4oD, Spotify and more.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="home-plugin-container col-md-12 cta-wrapper">
+                    <a href="#" class="btn btn-lg btn-cta call-to-action-button" data-gaeventid="cta_home_2">
+                        14 day free trial
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="arrow-lower-wrapper">
+            <p class="text grey">
+                <span>What's awesome?</span>
+            </p>
+
+            <p class="arrow">
+                <span class="image" data-section="reasons"></span>
+            </p>
+        </div>
+
+    </section>
+
+    <section class="reasons grey" id="reasons">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>
+                        Why us?<br/>
+                        <span class="line"></span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="row fadeInUp wow" data-wow-duration="1.2s">
+                <div class="col-sm-4 feature">
+                    <img src="{% static "img/features/fastastic.svg" %}" alt="Fastastic" class="img-circle"/>
+
+                    <h2>Lightning Fast</h2>
+
+                    <div class="line"></div>
+                    <p>
+                        We give you the purest direct connection to a channel. This means you get lightning fast speed -
+                        hands down faster than any VPN.
+                    </p>
+                </div>
+                <div class="col-sm-4 feature">
+                    <img src="{% static "img/features/super-secure.svg" %}" alt="Super Secure" class="img-circle"/>
+
+                    <h2>Super Secure</h2>
+
+                    <div class="line"></div>
+                    <p>
+                        We won't touch your SSL connection, and we don't manipulate or break any tunnel connections
+                        with any other server, which means keeping pesky hackers and snoops out.
+                    </p>
+                </div>
+                <div class="col-sm-4 feature">
+                    <img src="{% static "img/features/open-source.svg" %}" alt="Open Source" class="img-circle"/>
+
+                    <h2>Open Source</h2>
+
+                    <div class="line"></div>
+                    <p>
+                        We invite anyone to contribute, enhance, bug fix or improve our service. This makes us
+                        completely transparent - you can see everything under the hood!
+                    </p>
+                </div>
+            </div>
+
+            <div class="row fadeInUp wow" data-wow-duration="1.2s">
+                <div class="col-sm-4 feature">
+                    <img src="{% static "img/features/private.svg" %}" alt="Private" class="img-circle"/>
+
+                    <h2>Private</h2>
+
+                    <div class="line"></div>
+                    <p>
+                        Your data is completely safe with us, because we don't have it! We don't track any of our user's
+                        data. Proxmate also conceals your IP location, so you could be accessing content from anywhere.
+                    </p>
+                </div>
+                <div class="col-sm-4 feature">
+                    <img src="{% static "img/features/support.svg" %}" alt="Support" class="img-circle"/>
+
+                    <h2>24HR Support</h2>
+
+                    <div class="line"></div>
+                    <p>
+                        Problems? Don't know what to do? Our 24/7 support team are wild animals, hunting down and fixing
+                        any issues as soon as possible.
+                    </p>
+                </div>
+                <div class="col-sm-4 feature">
+                    <img src="{% static "img/features/pledge.svg" %}" alt="Our Pledge" class="img-circle"/>
+
+                    <h2>The Proxmate Pledge</h2>
+
+                    <div class="line"></div>
+                    <p>
+                        We believe in an open internet. We aim to be the most reliable, trustworthy, transparent service
+                        to help you access content when and where you want it.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="arrow-lower-wrapper">
+            <p class="text grey">
+                <span>More!</span>
+            </p>
+
+            <p class="arrow">
+                <span class="image" data-section="reasons-more"></span>
+            </p>
+        </div>
+
+    </section>
+
+    <section class="reasons-more white">
+
+        <div class="container fadeInDown fadeInUp wow" data-wow-duration="1s">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>
+                        Even more reasons to use us<br/>
+                        <span class="line"></span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 col-md-offset-6">
+                    <ul>
+                        <li><span class="glyphicon glyphicon-ok"></span> Unlimited bandwidth</li>
+                        <li><span class="glyphicon glyphicon-ok"></span> Unlimited data transfer</li>
+                        <li><span class="glyphicon glyphicon-ok"></span> Channel unlock request service</li>
+                        <li><span class="glyphicon glyphicon-ok"></span> Access Netflix in 14 countries</li>
+                        <li><span class="glyphicon glyphicon-ok"></span> No logging of your browsing activity</li>
+                        <li><span class="glyphicon glyphicon-ok"></span> No ads – we’ll <strong>never</strong> serve you
+                            these
+                        </li>
+                        <li><span class="glyphicon glyphicon-ok"></span> 99.9% server uptime</li>
+                        <li><span class="glyphicon glyphicon-ok"></span> Moneyback guarantee</li>
+                        <li><span class="glyphicon glyphicon-ok"></span> One of the lowest prices around, we believe in
+                            accessibility for all!
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="home-plugin-container col-md-12 cta-wrapper">
+                    <a href="#" class="btn btn-lg btn-cta call-to-action-button" data-gaeventid="cta_home_3">
+                        14 day free trial
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="arrow-lower-wrapper">
+            <p class="text grey">
+                <span>Don't take our word for it</span>
+            </p>
+
+            <p class="arrow">
+                <span class="image" data-section="users"></span>
+            </p>
+        </div>
+
+    </section>
+
+    <section class="users grey">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>
+                        Users Say...<br/>
+                        <span class="line"></span>
+                    </h1>
+
+                    <h2>
+                        Over 300,000 people are currently using Proxmate<br/>to access their favourite content!
+                    </h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 fadeInUp wow">
+
+                    <div class="quotes-wrapper">
+
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="quote">
+                                    <p>Proxmate is one of the few players that’s been upfront with their offering. I
+                                        like the fact what you see is what you get - no tracking, open source, no
+                                        logging of data etc.</p>
+
+                                    <p class="signature">Victor - Germany</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="quote">
+                                    <p>Thanks to the team at Proxmate! I've been using you for 2 years now and you've
+                                        always given me a great service. Keep up the good work!</p>
+
+                                    <p class="signature">Sarah - UK</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="quote">
+                                    <p>I made the switch from a VPN and haven’t looked back. Easy to set up and fast
+                                        fast fast. For a really simple, quick way to watch Netflix Proxmate has been
+                                        perfect.</p>
+
+                                    <p class="signature">Rich B - UK</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="arrow-lower-wrapper">
+            <p class="text grey">
+                <span>Check it out for yourself</span>
+            </p>
+
+            <p class="arrow">
+                <span class="image" data-section="try-out"></span>
+            </p>
+        </div>
+
+    </section>
+
+    <section class="try-out white">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>
+                        Try us out<br/>
+                        <span class="line"></span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 home-plugin-container cta-wrapper fadeInUp wow">
+                    <a href="#" class="btn btn-lg btn-cta call-to-action-button" data-gaeventid="cta_home_4">
+                        14 day free trial
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+{% endblock %}

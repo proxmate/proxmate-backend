@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Blog | Get all the latest Proxmate news{% endblock %}
+{% block bodyclass %} blog {% endblock %}
+
+{% block content %}
+<section class="grey page-title">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Blog</h1>
+                <div class="line line-center"></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="white page-description">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-sm-7">
+                <h2>Proxmate Blog</h2>
+            </div>
+            <div class="col-sm-5">
+                <form>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="q" placeholder="Search" />
+                        <div class="input-group-btn">
+                            <input type="submit" class="btn btn-default" value="Search" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="grey blog-list">
+    <div class="container">
+        {% for each_post in posts %}
+            <div class="row single-item">
+            <div class="col-xs-3 col-sm-2">
+                <div class="date">
+                    <a href="{{ path }}{{ each_post.slug }}">
+                        {{ each_post.date_created }}
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-9 col-sm-10">
+                <p>
+                    <a href="{{ path }}{{ each_post.slug }}">
+                        <span class="title">{{ each_post }}</span><br />
+                        {{ each_post.content|truncatechars:60|striptags }}
+                    </a>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

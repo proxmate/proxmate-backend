@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}About | Proxmate About Us{% endblock %}
+{% block bodyclass %} about-us {% endblock %}
+
+{% block content %}
+
+<section class="grey">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>The Team</h1>
+                <div class="line line-center"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <p>
+                    Proxmate is a group of technologists whose nationalities read like a flag of the United Nations. It started as a hobby for one of us who faced an all too common issue - having restrictions on what you can access on the internet.  
+                </p>
+                <p>
+                    Being a group of expats it soon became clear this was a real problem for us all, and together we’ve been working on making Proxmate bigger and better, expanding to more channels and services all over the world.
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <p>
+                    We now have over 300,000 users, and are growing rapidly.  We’re thrilled to have a service that so many people love! 
+                </p>
+                <p>
+                    The team here believes in an Open Internet.  Our is aim to be the most reliable, trustworthy, transparent service to help you access content when and where you want it.
+                </p>
+                <p class="signature">
+                    <img src="{% static "img/signature-team.png" %}" alt="The Proxmate Team" />
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="arrow-lower-wrapper">
+        <p class="arrow">
+            <span class="image" data-section="technology"></span>
+        </p>
+    </div>
+
+</section>
+
+<section class="white technology">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Technology</h1>
+                <div class="line line-center"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <p>
+                    <strong>Proxmate</strong> is a browser plug-in service using web proxy technology to allow users to easily access certain web content that would normally not be accessible for them due to geo blocking of IPs. 
+                </p>
+                <p>
+                    A browser plug-in is simply software that adds functionality to a Web browser (like Chrome, Firefox or Opera).  They are typically from a third party (like us!) rather than the browser developer, and are also called “add-ons” or “extensions”.
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <p>
+                    <strong>What is a proxy server?</strong> It might sound complicated, but a proxy sever is quite simply another computer on the internet that acts as an intermediary between you and the server (or website) which you requested the information from.
+                </p>
+                <p>
+                    Proxmate uses proxy servers located in numerous countries and provides you access to these servers in order to view content which might otherwise be blocked based on your geographic location.
+                </p>
+            </div>
+            <div class="text-center col-sm-12">
+            <p>
+                Click <a href="/#reasons">here</a> for a full list of benefits provided by Proxmate technology.
+            </p>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 image">
+                <img src="{% static "img/illustrations/technology.svg" %}" alt="Technology" />
+            </div>
+        </div>
+
+    </div>
+
+    <div class="arrow-lower-wrapper">
+        <p class="arrow">
+            <span class="image" data-section="open-source"></span>
+        </p>
+    </div>
+
+</section>
+
+<section class="grey open-source">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>We're Open Source</h1>
+                <div class="line line-center"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <p class="description">
+                    ProxMate is put together by a wide range of different technologies. Everything we use is open and available for you to try out yourself!
+                </p>
+                <ul>
+                    <li>Addon: JavaScript, AngularJS, Jasmine, Mocha, Chai (source)</li>
+                    <li>API server: JavaScript, MySQL (source)</li>
+                    <li>This website: Django, Twitter Bootstrap, jQuery (source)</li>
+                    <li>Proxy software: Squid3</li>
+                    <li>Github repository: <a href="https://github.com/SecureSoftwareVenture">click here!</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-6 image">
+                <img src="{% static "img/open-source.png" %}" alt="Open Source" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="feedback">
+                    <p>
+                        If you’d like to drop us a note with questions or feedback, <br />
+                        get in touch at <a href="mailto:support@proxmate.me">support@proxmate.me</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

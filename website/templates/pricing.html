@@ -1,0 +1,415 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Pricing | Simple pricing to suit everybody{% endblock %}
+{% block bodyclass %} pricing {% endblock %}
+
+{% block content %}
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script type="text/javascript">
+    // This identifies your website in the createToken call below
+    //Stripe.setPublishableKey('{{ STRIPE_PUBLISHABLE_KEY }}');
+    // ...
+    window.STRIPE_PUBLISHABLE_KEY = '{{ STRIPE_PUBLISHABLE_KEY }}'
+    </script>
+    <section class="pricing-content grey">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>
+                        <strong>Incredible introductory prices!</strong><br/>
+                        For a limited time only
+                    </h1>
+
+                    <div class="line line-center"></div>
+                    <p class="pricing-info">
+                        To launch the new Proxmate we’re offering astonishing prices,
+                        but they won't be around forever - we challenge you to find
+                        cheaper prices for a better service!<br/>
+                        Note - you can <strong>only</strong> purchase a plan after activating the free trial. <br/>
+                        <strong>No credit or debit card needed for the free trial</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!--
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="promo-code">
+                        <p>Have a promo code? Apply it, then choose your plan below</p>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="code" placeholder="enter promo code" />
+                            <span class="input-group-btn">
+                                <input type="button" class="btn btn-amber" value="Apply" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            -->
+
+            <div class="row">
+                <div class="col-sm-12 col-sm-10 col-md-12 col-xs-12">
+
+                    <div class="row" id="price-list">
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="option stripe-plan-option" data-plan="proxmate_monthly_099"
+                                 data-description="$0.99 - Billed once monthly"
+                                 data-amount="99" data-name="Monthly Subscription" data-period="per month"
+                                 data-image="/img/logo_128.png">
+                                <h3>Monthly</h3>
+                                <h4 style="color:#be3a34">Subscription</h4>
+                                <div class="price-single">
+                                    <div class="part currency">$</div>
+                                    <div class="part number">0.</div>
+                                    <div class="part decimals">99</div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="price-single discounted" style="width:65%">
+                                    <div class="part currency">$</div>
+                                    <div class="part number">1.</div>
+                                    <div class="part decimals">95</div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="btn-wrapper">
+                                    <a href="#" class="btn btn-cta pricing-plan-button" data-ga_eventid="plan_dld_button_1">Select Plan</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="option stripe-plan-option" data-plan="proxmate_quarterly_265"
+                                 data-description="$2.65 - Billed once a quarter"
+                                 data-amount="265" data-name="Quarterly Subscription" data-period="per quarter">
+                                <h3>Quarterly</h3>
+                                <h4 style="color:#be3a34">Subscription</h4>
+                                <div class="price-single">
+                                    <div class="part currency">$</div>
+                                    <div class="part number">2.</div>
+                                    <div class="part decimals">65</div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="price-single discounted" style="width:65%">
+                                    <div class="part currency">$</div>
+                                    <div class="part number">4.</div>
+                                    <div class="part decimals">95</div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="btn-wrapper">
+                                    <a href="#" class="btn btn-cta pricing-plan-button" data-ga_eventid="plan_dld_button_2">Select Plan</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="option stripe-plan-option" data-plan="proxmate_yearly_995"
+                                 data-description="$9.95 - Billed once a year"
+                                 data-amount="995" data-name="Yearly Subscription" data-period="per year">
+                                <div class="best-deal" style="z-index: 1000">
+                                    <img src="{% static "img/best-deal.png" %}" alt="Best Deal"/>
+                                </div>
+                                <h3>Yearly</h3>
+                                <h4 style="color:#be3a34">Subscription</h4>
+                                <div class="price-single">
+                                    <div class="part currency">$</div>
+                                    <div class="part number">9.</div>
+                                    <div class="part decimals">95</div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="price-single discounted" style="width:65%">
+                                    <div class="part currency">$</div>
+                                    <div class="part number">17.</div>
+                                    <div class="part decimals">95</div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="btn-wrapper">
+                                    <a href="#" class="btn btn-cta pricing-plan-button" data-ga_eventid="plan_dld_button_3">Select Plan</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="option stripe-plan-option" data-plan="proxmate_yearly_1195"
+                                 data-description="$11.95 - Billed once"
+                                 data-amount="1195" data-name="Yearly One-Off Payment" data-period="">
+
+                                <style>
+                                    .tooltip-inner {
+                                        max-width: 350px;
+                                        background: #ffffff;
+                                        color: #000000;
+                                        border: 3px solid #be3a34;
+                                        /* If max-width does not work, try using width instead */
+                                        width: 350px;
+                                        white-space: pre-line;
+                                        text-align: left;
+                                        font-size: 14px;
+                                    }
+                                    .tooltip.top .tooltip-arrow {
+                                        border-top-color: #be3a34;
+                                    }
+                                </style>
+                                <a class="best-deal" style="text-decoration:none; z-index: 1000; right: 5px; top: 5px; font-size: 21px; border: 2px solid #be3a34; padding: 0px 9px; color: #be3a34; font-weight: bold;" href="#" data-toggle="tooltip"
+                                   title="This one off payment will not auto-renew.&#013;
+
+                                   This payment plan was introduced for those who are unable to subscribe to auto-renew plans.&#013;
+
+                                   The cost is slightly higher than our yearly subscription due to the set up and maintenance it takes to manage.">?</a>
+                                <h3>Yearly</h3>
+                                <h4 style="color:#be3a34">One-Off Payment</h4>
+                                <div class="price-single">
+                                    <div class="part currency">$</div>
+                                    <div class="part number">11.</div>
+                                    <div class="part decimals">95</div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="price-single discounted" style="width:65%">
+                                    <div class="part currency">$</div>
+                                    <div class="part number">22.</div>
+                                    <div class="part decimals">95</div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="btn-wrapper">
+                                    <a href="#" class="btn btn-cta pricing-plan-button" data-ga_eventid="plan_dld_button_4">Select Plan</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row payment-options" style="display:none">
+                        <div class="col-md-4 col-md-offset-2 col-sm-6">
+                            <a id="stripe-button" style="font-size: 18px;" href="#" class="btn">
+                                Credit or Debit Card
+                                <img src="{% static "img/payment/visa.png" %}" alt="Credit Card"/>
+                                <img src="{% static "img/payment/mastercard.png" %}" alt="Credit Card"/>
+                                <img src="{% static "img/payment/american_express.png" %}" alt="Credit Card"/>
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <form id="paypal-proxmate_monthly_099" action="{{ PAYPAL_ACTION_URL }}" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_xclick-subscriptions">
+                                <input type="hidden" name="business" value="{{ PAYPAL_MERCHANT_ID }}">
+                                <input type='hidden' name='rm' value='2'>
+                                <input type='hidden' name='item_name' value='Monthly Subscription'>
+                                <input type='hidden' name='item_number' value='proxmate_monthly_099'>
+                                <input type='hidden' name='currency_code' value='USD'>
+                                <input type='hidden' name='return' value='{{ WEBSITE_URL }}paypal/return/'>
+                                <input type='hidden' name='cancel_return' value='{{ WEBSITE_URL }}pricing/?payment=canceled'>
+                                <input class="paypal-remaining-days" type="hidden" name="a1" value="0">
+                                <input class="paypal-remaining-days amount" type="hidden" name="p1" value="0">
+                                <input class="paypal-remaining-days period" type="hidden" name="t1" value="D">
+                                <input type='hidden' name='src' value='1'>
+                                <input type='hidden' name='no_shipping' value='1'>
+                                <input type="hidden" name="a3" value="0.99">
+                                <input type="hidden" name="p3" value="1">
+                                <input type="hidden" name="t3" value="M">
+                                <input class="paypal-identifier-api-key" type="hidden" name="custom" value="">
+                            </form>
+                            <form id="paypal-proxmate_quarterly_265" action="{{ PAYPAL_ACTION_URL }}" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_xclick-subscriptions">
+                                <input type="hidden" name="business" value="{{ PAYPAL_MERCHANT_ID }}">
+                                <input type='hidden' name='item_name' value='Quarterly Subscription'>
+                                <input type='hidden' name='item_number' value='proxmate_quarterly_265'>
+                                <input type='hidden' name='currency_code' value='USD'>
+                                <input type='hidden' name='return' value='{{ WEBSITE_URL }}paypal/return/'>
+                                <input type='hidden' name='cancel_return' value='{{ WEBSITE_URL }}pricing/?payment=canceled'>
+                                <input class="paypal-remaining-days" type="hidden" name="a1" value="0">
+                                <input class="paypal-remaining-days amount" type="hidden" name="p1" value="0">
+                                <input class="paypal-remaining-days period" type="hidden" name="t1" value="D">
+                                <input type='hidden' name='rm' value='2'>
+                                <input type='hidden' name='src' value='1'>
+                                <input type='hidden' name='no_shipping' value='1'>
+                                <input type="hidden" name="a3" value="2.65">
+                                <input type="hidden" name="p3" value="3">
+                                <input type="hidden" name="t3" value="M">
+                                <input class="paypal-identifier-api-key" type="hidden" name="custom" value="">
+                            </form>
+                            <form id="paypal-proxmate_yearly_995" action="{{ PAYPAL_ACTION_URL }}" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_xclick-subscriptions">
+                                <input type="hidden" name="business" value="{{ PAYPAL_MERCHANT_ID }}">
+                                <input type='hidden' name='rm' value='2'>
+                                <input type='hidden' name='item_name' value='Yearly Subscription'>
+                                <input type='hidden' name='item_number' value='proxmate_yearly_995'>
+                                <input type='hidden' name='currency_code' value='USD'>
+                                <input type='hidden' name='return' value='{{ WEBSITE_URL }}paypal/return/'>
+                                <input type='hidden' name='cancel_return' value='{{ WEBSITE_URL }}pricing/?payment=canceled'>
+                                <input class="paypal-remaining-days" type="hidden" name="a1" value="0">
+                                <input class="paypal-remaining-days amount" type="hidden" name="p1" value="0">
+                                <input class="paypal-remaining-days period" type="hidden" name="t1" value="D">
+                                <input type='hidden' name='src' value='1'>
+                                <input type='hidden' name='no_shipping' value='1'>
+                                <input type="hidden" name="a3" value="9.95">
+                                <input type="hidden" name="p3" value="1">
+                                <input type="hidden" name="t3" value="Y">
+                                <input class="paypal-identifier-api-key" type="hidden" name="custom" value="">
+                            </form>
+                            <form id="paypal-proxmate_yearly_1195" action="{{ PAYPAL_ACTION_URL }}" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_xclick">
+                                <input type="hidden" name="business" value="{{ PAYPAL_MERCHANT_ID }}">
+                                <input type='hidden' name='rm' value='2'>
+                                <input type='hidden' name='item_name' value='Yearly One-Off Payment'>
+                                <input type='hidden' name='item_number' value='proxmate_yearly_1195'>
+                                <input type='hidden' name='currency_code' value='USD'>
+                                <input type='hidden' name='return' value='{{ WEBSITE_URL }}paypal/return/'>
+                                <input type='hidden' name='cancel_return' value='{{ WEBSITE_URL }}pricing/?payment=canceled'>
+                                <input type='hidden' name='src' value='1'>
+                                <input type='hidden' name='no_shipping' value='1'>
+                                <input type="hidden" name="amount" value="11.95">
+                                <input class="paypal-identifier-api-key" type="hidden" name="custom" value="">
+                            </form>
+
+                            <a id="pay-pal-button" style="font-size: 18px;" class="btn">
+                                Pay with <img src="{% static "img/payment/pay_pal.png" %}" alt="PayPal"/>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row cta-wrapper">
+                <div class="col-sm-12">
+                    <p>
+                        All prices in USD.<br/>
+                        You can upgrade your free trial at any time to one of the 3 plans above.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row cta-wrapper pricing-plugin-container">
+                <div class="col-sm-12">
+                    <h2>If you haven't experienced us yet</h2>
+
+                    <p>
+                        <a href="#" class="btn btn-cta call-to-action-button" data-gaeventid="cta_pricing_1">
+                            14 day free trial
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="arrow-lower-wrapper">
+            <p class="text grey">
+                <span>For What?</span>
+            </p>
+
+            <p class="arrow">
+                <span class="image" data-section="features"></span>
+            </p>
+        </div>
+
+    </section>
+
+    <section class="features white">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>
+                        What you get with every plan
+                    </h1>
+
+                    <div class="line"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-10 col-md-offset-1 card list-wrapper">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul>
+                                <li><span class="glyphicon glyphicon-ok"></span> Lightning fast speed</li>
+                                <li><span class="glyphicon glyphicon-ok"></span> Unlimited bandwidth</li>
+                                <li><span class="glyphicon glyphicon-ok"></span> Unlimited data transfer</li>
+                                <li><span class="glyphicon glyphicon-ok"></span> Private – no logging of browsing
+                                    activity
+                                </li>
+                                <li><span class="glyphicon glyphicon-ok"></span> 24/7 Support</li>
+                                <li><span class="glyphicon glyphicon-ok"></span> 200+ channels</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul>
+                                <li><span class="glyphicon glyphicon-ok"></span> Access Netflix in 14 countries</li>
+                                <li><span class="glyphicon glyphicon-ok"></span> No ads</li>
+                                <li><span class="glyphicon glyphicon-ok"></span> Open source</li>
+                                <li><span class="glyphicon glyphicon-ok"></span> Channel unlock request service</li>
+                                <li><span class="glyphicon glyphicon-ok"></span> 99.9% server uptime</li>
+                                <li><span class="glyphicon glyphicon-ok"></span> Moneyback guarantee</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="modal fade in transactional-modal" id="payment-error">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title emphasize">Payment cancelled</h4>
+                </div>
+                <!-- Just use the modal body you need for your needed transactional message and disregard the others -->
+                <div class="modal-body">
+                    <div class="row feedback">
+                        <div class="col-sm-4 error"></div>
+                        <div class="col-sm-8 text">
+                            <p>There’s been a problem with your payment and it has not been processed. Please check your card details, or check with your bank or card issuer.</p>
+                            <p>Kind regards,</p>
+                                <img src="{% static "img/signature-team.png" %}" alt="The Proxmate Team"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade in transactional-modal" id="activation-retrieval_expired">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title emphasize">YOU’RE PROXMATE ACCOUNT HAS EXPIRED</h4>
+                </div>
+                <!-- Just use the modal body you need for your needed transactional message and disregard the others -->
+                <div class="modal-body">
+                    <div class="row feedback">
+                        <div class="col-sm-4 error"></div>
+                        <div class="col-sm-8 text">
+                            <p>You need to select a plan to continue using Proxmate.</p>
+                            <br>
+                            <br>
+                                <img src="{% static "img/signature-team.png" %}" alt="The Proxmate Team"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if activation %}
+        <script>
+            $("#activation-{{activation}}").modal('show');
+            setTimeout(function () {
+            }, 3000)
+        </script>
+    {% endif %}
+{% endblock %}

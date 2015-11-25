@@ -1,0 +1,100 @@
+{% load staticfiles %}
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!-- Charsets and others -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Page Info -->
+        <title>ProxMate</title>
+        <link rel="shortcut icon" type="image/png" href="{% static "favicon.ico" %}"/>
+
+        <!-- Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700|Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
+    </head>
+    <body class="transactional">
+
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="/">
+                            <img src="{% static "img/logo.svg" %}" alt="ProxMate" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section>
+            <div class="container">
+                <div class="col-sm-6 col-sm-offset-3">
+
+                    <h1>Title goes here</h1>
+
+                    <div class="card">
+                        <div class="alert alert-success" role="alert">
+                            <strong>Success!</strong> This is what a successful message looks like.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="alert alert-info" role="alert">
+                            <strong>Info!</strong> Gives you a piece of information.<br />
+                            This kind of box can hold all kind of stuff.<br />
+                            <div class="input-group col-sm-12">
+                                <input type="text" class="form-control" placeholder="Your e-mail address" />
+                                <span class="input-group-btn">
+                                    <input type="submit" class="btn btn-amber" value="Submit" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="alert alert-warning" role="alert">
+                            <strong>Warning!</strong> Something's not looking too good, better check it out.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="alert alert-danger" role="alert">
+                            <strong>Error!</strong> The error message ought to go here.<br />
+                            It can also be on multiple lines.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <p>We're going to need your e-mail.</p>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Your e-mail address" />
+                            <span class="input-group-btn">
+                                <input type="submit" class="btn btn-amber" value="Submit" />
+                            </span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <p>PROXMATE UNBLOCKS YOUR FAVORITE MOVIES, MUSIC, SPORTS AND MORE.</p>
+                    </div>
+                    <div class="col-xs-4 copyright">Copyright &copy; 2015 ProxMate</div>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+</html>

@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block bodyclass %} post-install {% endblock %}
+
+{% block content %}
+    <section class="grey">
+
+        <div class="post-install container">
+            <h2>Oh no!<br/>We're sorry to see you go...</h2>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                    <p class="feedback">
+                        Thanks for using us and remember we'd be honoured to have you back again at any time.
+                    </p>
+
+                    <p class="feedback">
+                        <a href="#" class="btn btn-cta call-to-action-button-again">Download Proxmate Again</a>
+                    </p>
+
+                    <p class="feedback">
+                        If you have any comments or feedback that might help improve our service, we'd love to hear from
+                        you!
+                    </p>
+
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your e-mail"
+                                   name="generic-feedback-email"/>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="generic-feedback-comment" class="form-control" rows="5"
+                                      placeholder="Your comment"></textarea>
+                        </div>
+                        <input type="submit" data-category="uninstall"
+                               class="generic-feedback-input btn btn-amber pull-right" value="SEND"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade in transactional-modal" id="feedback_success">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title emphasize">Request sent!</h4>
+                        <!--
+                            <h4 class="modal-title emphasize">Proxmate is now activated</h4>
+                        -->
+                    </div>
+                    <!-- Just use the modal body you need for your needed transactional message and disregard the others -->
+                    <div class="modal-body">
+                        <div class="row feedback">
+                            <div class="col-sm-4 success"></div>
+                            <!--
+                                <div class="col-sm-4 error"></div>
+                                <div class="col-sm-8 text">
+                                    <p>Please choose a subscription plan to continue using ProxMate</p>
+                                </div>
+                            -->
+                            <div class="col-sm-8 text">
+                                <p>
+                                    Your feedback has been sent!
+                                    </br></br>
+                                    Thanks!</br>
+                                    <img src="{% static "img/signature-team.png" %}" alt="The Proxmate Team"/>
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container large-image">
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="{% static "img/illustrations/goodbye.svg" %}"/>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

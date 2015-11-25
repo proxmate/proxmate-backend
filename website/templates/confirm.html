@@ -1,0 +1,543 @@
+<html>
+<head>
+    <!--
+    http://192.168.100.10/confirm/eyJlbWFpbCI6ImFkcmlhbkBhcHBpeC5pbyIsImJyb3dzZXIiOiJDaHJvbWUifQ:1ZnUfg:lGfNeye8JBai17Wc-D9K-QcP6Sw/
+    -->
+    <script src="{{ STATIC_URL }}scripts/jquery-2.1.4.min.js"></script>
+    <script>
+
+        function Plugin() {
+            var _self = this;
+
+            this.init = function (callback) {
+                if (window.chrome && chrome.app && chrome.webstore) {
+                    _self.extension = _self.available_extensions.chrome
+                }
+                else if (window.opr && window.opr.addons) {
+                    _self.extension = _self.available_extensions.opera
+                }
+                else if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+                    _self.extension = _self.available_extensions.firefox
+                }
+                else {
+                    _self.extension = _self.available_extensions.not_available
+                }
+
+                _self.extension.init(callback)
+                return true;
+            };
+
+            this.extension = {}
+
+            this.installed_plugin = false;
+
+            this.plugin_key = '';
+
+            this.available_extensions = {
+                chrome: {
+                    name: "Chrome",
+                    plugin_id: "ifalmiidchkjjmkkbkoaibpmoeichmki",
+                    install: function (args) {
+                        var _install_check = function () {
+                            if ($rootScope.is_plugin_installed) {
+                                if (typeof args.on_plugin_installed == 'function') {
+                                    args.on_plugin_installed()
+                                }
+
+                                return;
+                            }
+
+                            setTimeout(function () {
+                                self.extension.detect_plugin({callback: _install_check()})
+                            }, 100)
+                        };
+
+                        chrome.webstore.install(
+                                'https://chrome.google.com/webstore/detail/' + this.plugin_id,
+                                function () {
+                                    self.extension.detect_plugin({
+                                        callback: _install_check
+                                    });
+                                },
+                                function (error) {
+                                    if (typeof args.on_error == 'function') {
+                                        args.on_error()
+                                    }
+                                }
+                        );
+
+                    },
+                    detect_plugin: function (args) {
+                        chrome.runtime.sendMessage(_self.extension.plugin_id, {action: "checkInstall"}, {}, function (response) {
+                            args.callback(response ? true : false)
+                        });
+                    },
+                    select_netflix: function (args) {
+                        chrome.runtime.sendMessage(_self.extension.plugin_id, {action: "selectNetflix", params: {country: args.country }}, {}, function (response) {
+                            args.callback(response ? true : false)
+                        });
+                    },
+                    activate_plugin: function (callback) {
+                        _self.extension.detect_plugin({
+                            callback: function (is_installed) {
+                                if (!is_installed) {
+                                    return callback({
+                                        success: false,
+                                        error: "no_plugin"
+                                    })
+                                }
+
+                                chrome.runtime.sendMessage(_self.extension.plugin_id, {
+                                    action: "activatePlugin",
+                                    params: {
+                                        activation_code: '{{ key }}'
+                                    }
+                                }, {}, function (response) {
+                                    return callback(response)
+                                })
+                            }
+                        });
+                    },
+                    get_key: function (callback) {
+                        chrome.runtime.sendMessage(_self.extension.plugin_id, {
+                            action: "getApiKey",
+                        }, {}, function (response) {
+                            return callback(response)
+                        })
+                    },
+                    get_status: function (callback) {
+                        chrome.runtime.sendMessage(_self.extension.plugin_id, {
+                            action: "getStatus",
+                        }, {}, function (response) {
+                            return callback(response)
+                        })
+                    },
+                    request_status: function (callback) {
+                        chrome.runtime.sendMessage(_self.extension.plugin_id, {
+                            action: "updateStatus",
+                        }, {}, function (response) {
+                            return callback(response)
+                        })
+                    },
+                    registered_email: function () {
+                        return _self.status.email;
+                    },
+                    init: function (callback) {
+                        _self.extension.detect_plugin({
+                            callback: function (data) {
+                                _self.installed_plugin = data;
+                                if (data) {
+                                    _self.extension.get_key(function (data) {
+                                        _self.plugin_key = data;
+                                        _self.extension.get_status(function (data) {
+                                            if (!data) {
+                                                callback();
+                                                return
+                                            }
+                                            _self.status = data.data;
+                                            _self.subscription_status = data.data.subscription_status;
+                                            callback()
+                                        })
+                                    })
+                                }
+                                else {
+                                    callback()
+                                }
+                            }
+                        });
+                    }
+                },
+                firefox: {
+                    name: "Firefox",
+                    install: function (args) {
+                        var _self = this;
+                        // TODO reactivate ga('send', 'event', 'button', 'install', 'install_start');
+                        InstallTrigger.install(
+                                {
+                                    "Foo": {
+                                        URL: "https://addons.mozilla.org/firefox/downloads/latest/360079/addon-360079-latest.xpi",
+                                        IconURL: "https://s3.amazonaws.com/cdn.zapyo.com/images/favicon.png",
+                                        //Hash: e.target.getAttribute("hash"),
+                                        toString: function () {
+                                            return this.URL;
+                                        }
+                                    }
+                                });
+
+                    },
+                    select_netflix: function (args) {
+
+                    },
+                    init_listeners: function () {
+                        var self = this;
+                        window.addEventListener("proxmate-addon-message", function (e) {
+                            if (typeof  self.cbs[e.detail.eid] == 'function') {
+                                self.cbs[e.detail.eid](e.detail)
+                                delete self.cbs[e.detail.eid]
+                            }
+                        });
+                    },
+                    cbs: {},
+                    sendMessage: function (cmd, data, callback) {
+                        var self = this;
+                        data.c = cmd;
+                        data.eid = cmd + '-' + (new Date).getTime() + Math.random().toString(36).substring(7);
+                        var event = new CustomEvent('proxmate-page-message', {'detail': data});
+                        window.dispatchEvent(event);
+                        self.cbs[data.eid] = callback
+                    },
+                    detect_plugin: function (callback) {
+                        if( !window._pluginID )
+                        {
+                            return callback({is_installed: false})
+                        }
+                        _self.extension.sendMessage('checkInstall', {}, function (response) {
+                            callback(response)
+                        });
+                    },
+                    activate_plugin: function (callback) {
+                        _self.extension.detect_plugin(function (data) {
+                            if (!data.is_installed) {
+                                return callback({
+                                    success: false,
+                                    error: "no_plugin"
+                                })
+                            }
+
+                            _self.extension.sendMessage('activatePlugin', { activation_code: '{{ key }}' }, function (response) {
+                                return callback(response)
+                            });
+                        });
+                    },
+                    get_key: function (callback) {
+                        _self.extension.sendMessage('getApiKey', {}, function (response) {
+                            callback(response)
+                        });
+                    },
+                    get_status: function (callback) {
+                        _self.extension.sendMessage('getStatus', {}, function (response) {
+                            return callback(response)
+                        });
+                    },
+                    request_status: function (callback) {
+                        _self.extension.sendMessage('updateStatus', {}, function (response) {
+                            return callback(response)
+                        });
+                    },
+                    registered_email: function () {
+                        return _self.status.email;
+                    },
+                    init: function (callback) {
+                        _self.extension.init_listeners()
+                        _self.extension.detect_plugin(function (result) {
+                            _self.installed_plugin = result.is_installed;
+                            if (result.is_installed) {
+                                _self.extension.get_key(function (data) {
+                                    _self.plugin_key = data.key;
+                                    _self.extension.get_status(function (data) {
+                                        if (!data.status) {
+                                            callback();
+                                            return
+                                        }
+                                        _self.status = data.status.data;
+                                        _self.subscription_status = data.status.data.subscription_status;
+                                        callback()
+                                    })
+                                })
+                            }
+                            else {
+                                callback()
+                            }
+                        })
+                    }
+                },
+                opera: {
+                    name: "Opera",
+                    plugin_id: "bembolboiohddlgpjeahldiipjemjneh",
+                    install: function (args) {
+                        var _install_check = function () {
+                            if ($rootScope.is_plugin_installed) {
+                                if (typeof args.on_plugin_installed == 'function') {
+                                    args.on_plugin_installed()
+                                }
+
+                                return;
+                            }
+
+                            setTimeout(function () {
+                                self.extension.detect_plugin({callback: _install_check()})
+                            }, 100)
+                        };
+                        opr.addons.installExtension(
+                            _self.extension.plugin_id,
+                            function () {
+                                self.extension.detect_plugin({
+                                    callback: _install_check
+                                });
+                            },
+                            function(errorMessage) {
+                                if (typeof args.on_error == 'function') {
+                                    args.on_error()
+                                }
+                            }
+                        );
+
+                    },
+                    detect_plugin: function (args) {
+                        if( !chrome.runtime )
+                        {
+                            args.callback(false)
+                            return false;
+                        }
+                        chrome.runtime.sendMessage(_self.extension.plugin_id, {action: "checkInstall"}, {}, function (response) {
+                            args.callback(response ? true : false)
+                        });
+                    },
+                    select_netflix: function (args) {
+                        chrome.runtime.sendMessage(_self.extension.plugin_id, {action: "selectNetflix", params: {country: args.country }}, {}, function (response) {
+                            args.callback(response ? true : false)
+                        });
+                    },
+                    activate_plugin: function (callback) {
+                        _self.extension.detect_plugin({
+                            callback: function (is_installed) {
+                                if (!is_installed) {
+                                    return callback({
+                                        success: false,
+                                        error: "no_plugin"
+                                    })
+                                }
+
+                                chrome.runtime.sendMessage(_self.extension.plugin_id, {
+                                    action: "activatePlugin",
+                                    params: {
+                                        activation_code: '{{ key }}'
+                                    }
+                                }, {}, function (response) {
+                                    return callback(response)
+                                })
+                            }
+                        });
+                    },
+                    get_key: function (callback) {
+                        chrome.runtime.sendMessage(_self.extension.plugin_id, {
+                            action: "getApiKey",
+                        }, {}, function (response) {
+                            return callback(response)
+                        })
+                    },
+                    get_status: function (callback) {
+                        chrome.runtime.sendMessage(_self.extension.plugin_id, {
+                            action: "getStatus",
+                        }, {}, function (response) {
+                            return callback(response)
+                        })
+                    },
+                    request_status: function (callback) {
+                        chrome.runtime.sendMessage(_self.extension.plugin_id, {
+                            action: "updateStatus",
+                        }, {}, function (response) {
+                            return callback(response)
+                        })
+                    },
+                    registered_email: function () {
+                        return _self.status.email;
+                    },
+                    init: function (callback) {
+                        _self.extension.detect_plugin({
+                            callback: function (data) {
+                                _self.installed_plugin = data;
+                                if (data) {
+                                    _self.extension.get_key(function (data) {
+                                        _self.plugin_key = data;
+                                        _self.extension.get_status(function (data) {
+                                            if (!data) {
+                                                callback();
+                                                return
+                                            }
+                                            _self.status = data.data;
+                                            _self.subscription_status = data.data.subscription_status;
+                                            callback()
+                                        })
+                                    })
+                                }
+                                else {
+                                    callback()
+                                }
+                            }
+                        });
+                    }
+                },
+                not_available: {
+                    install: function (args) {
+                        $('#warning-need_change_browser').modal('show');
+                    },
+                    select_netflix: function (args) {
+
+                    },
+                    detect_plugin: function () {
+
+                    },
+                    activate_plugin: function (callback) {
+                        return callback({
+                            success: false,
+                            error: 'bad_browser',
+                            alt: '{{ browser }}'
+                        })
+                    },
+                    init: function (callback) {
+                        callback()
+                    }
+                }
+            };
+
+            /**
+             * Starts the app. Retrieves servers and sets pac
+             */
+
+            this.start = function () {
+                return true;
+            };
+
+        }
+
+
+        $(document).ready(function () {
+            var PluginHandler = new Plugin()
+
+            PluginHandler.init(function () {
+                PluginHandler.extension.activate_plugin(function (result) {
+                    var _extra_params = '&browser={{browser}}&activation_key={{ key }}';
+                    if (!result.success) {
+                        window.location.href = '/channels/?activation=' + result.error + _extra_params;
+                        return
+                    }
+
+                    if( result.action == 'retrieval_expired' )
+                    {
+                        window.location.href = '/payment/?activation=' + result.action + _extra_params;
+                        return
+                    }
+
+                    window.location.href = '/channels/?activation=' + result.action + _extra_params;
+                })
+            });
+        })
+    </script>
+    <style>
+        body {
+            background-color: #eee;
+        }
+
+        .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -50px 0 0 -50px;
+            width: 100px;
+            height: 100px;
+            zoom: 1.7;
+
+        }
+
+        .circular {
+            -webkit-animation: rotate 2s linear infinite;
+            animation: rotate 2s linear infinite;
+            height: 100px;
+            position: relative;
+            width: 100px;
+        }
+
+        .path {
+            stroke-dasharray: 1, 200;
+            stroke-dashoffset: 0;
+            -webkit-animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+            animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+            stroke-linecap: round;
+        }
+
+        @-webkit-keyframes rotate {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotate {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes dash {
+            0% {
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0;
+            }
+            50% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -35;
+            }
+            100% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -124;
+            }
+        }
+
+        @keyframes dash {
+            0% {
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0;
+            }
+            50% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -35;
+            }
+            100% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -124;
+            }
+        }
+
+        @-webkit-keyframes color {
+            100%, 0% {
+                stroke: #d62d20;
+            }
+            40% {
+                stroke: #0057e7;
+            }
+            66% {
+                stroke: #008744;
+            }
+            80%, 90% {
+                stroke: #ffa700;
+            }
+        }
+
+        @keyframes color {
+            100%, 0% {
+                stroke: #d62d20;
+            }
+            40% {
+                stroke: #0057e7;
+            }
+            66% {
+                stroke: #008744;
+            }
+            80%, 90% {
+                stroke: #ffa700;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div id="confirmation-link" data-value="{{ key }}" data-browser="{{ browser }}"></div>
+<div class="loader">
+    <svg class="circular">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+    </svg>
+</div>
+</body>
+</html>

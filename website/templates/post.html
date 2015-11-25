@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Post | ProxMate{% endblock %}
+{% block bodyclass %} blog blog-single {% endblock %}
+
+{% block content %}
+<section class="grey page-title">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{ post.title }}</h1>
+                <div class="line line-center"></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="white page-description">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-7">
+                <h2>
+                    <span class="glyphicon glyphicon-user"></span> {{ post.author }}
+                    <span class="glyphicon glyphicon-calendar"></span> {{ post.date_created }}
+                </h2>
+            </div>
+            <div class="col-sm-5">
+                <form>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="q" placeholder="Search" />
+                        <div class="input-group-btn">
+                            <input type="submit" class="btn btn-default" value="Search" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="grey">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-8 article-content">
+                {{ post.content | safe}}
+            </div>
+            <div class="col-sm-4 blog-list">
+                {% for each_post in recent_posts %}
+                <div class="row single-item">
+                    <div class="col-xs-3">
+                        <div class="date">
+                            <a href="/blog/{{ each_post.slug }}">
+                                {{ each_post.date_created }}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xs-9">
+                        <p>
+                            <a href="/blog/{{ each_post.slug }}">
+                                <span class="title">{{ each_post }}</span><br />
+                                {{ each_post.content|truncatechars:60|striptags }}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

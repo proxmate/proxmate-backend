@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block bodyclass %} landing {% endblock %}
+
+{% block content %}
+
+<section class="grey welcome">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <h2>Hi there and welcome to Proxmate!</h2>
+                    <p>
+                        Below is an explanation of how the Proxmate plug-in works.<br />
+                        (If you don't need a tour and prefer to look around
+                        yourself, click <a href="/">here</a> to go straight to our homepage).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="white plugin">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" style="margin-top:-65px">
+                <h1>The Proxmate Plug-in</h1>
+                <div class="line line-center"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12" style="margin-top:-35px">
+                <div class="explained">
+                    <img src="{% static "img/plugin-explained.png" %}" alt="Plugin explained" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="arrow-lower-wrapper">
+        <p class="arrow">
+            <span class="image" data-section="features"></span>
+        </p>
+    </div>
+
+</section>
+
+<section class="grey features">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>WHAT YOU GET</h1>
+                <div class="line line-center"></div>
+            </div>
+        </div>
+
+        <div class="row details">
+            <div class="col-sm-10 col-sm-offset-1">
+                <ul>
+                    <li>See the features box below for all of the wonderful goodies that are included.</li>
+                    <li><a href="/channels">Click here</a> to check out all of the channels you can access!</li>
+                    <li>Your 14 day free trial has now started! See the 'Account' tab within the plug-in to keep track of this.</li>
+                    <li>After your trial is over you will need to move to a paid subscription to keep using the service, you can see our incredibly well priced plans <a href="/pricing">here</a>.</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1 list-wrapper card">
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul>
+                            <li><span class="glyphicon glyphicon-ok"></span> Access to 200+ channels</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Access Netflix in 14 countries</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Lightning fast speed</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Unlimited bandwidth </li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Unlimited data transfer</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Private – no logging of browsing activity </li>
+                            <li><span class="glyphicon glyphicon-ok"></span> 24/7 Support</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li><span class="glyphicon glyphicon-ok"></span> No ads</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Open source</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Channel unlock request service</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> 99.9% server uptime</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Moneyback guarantee</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="arrow-lower-wrapper">
+        <p class="arrow">
+            <span class="image" data-section="price"></span>
+        </p>
+    </div>
+
+</section>
+
+{% endblock %}

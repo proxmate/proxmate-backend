@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block bodyclass %} landing {% endblock %}
+
+{% block content %}
+
+<section class="grey welcome">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <h2>Hi there and welcome to the new Proxmate!</h2>
+                    <p>
+                        We want to quickly explain what Proxmate has become and how the new plug-in works<br />
+                        (If you don't need a tutorial and prefer to look around
+                        yourself, click <a href="/">here</a> to go straight to our new website).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="white plugin">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" style="margin-top:-65px">
+                <h1>The New Proxmate Plug-in</h1>
+                <div class="line line-center"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12" style="margin-top:-35px">
+                <div class="explained">
+                    <img src="{% static "img/plugin-explained.png" %}" alt="Plugin explained" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="arrow-lower-wrapper">
+        <p class="arrow">
+            <span class="image" data-section="features"></span>
+        </p>
+    </div>
+
+</section>
+
+<section class="grey features">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>What's Changed</h1>
+                <div class="line line-center"></div>
+            </div>
+        </div>
+
+        <div class="row details">
+            <div class="col-sm-10 col-sm-offset-1">
+                <ul>
+                    <li>We've added loads more functionality to our service. See the features box below for all of the wonderful goodies that are now included.</li>
+                    <li>Packages no longer exist, these are now called 'Channels'.</li>
+                    <li>Our channels are now easier than ever to access as you no longer need to go through an install process.  You will have automatic, immediate access to EVERY Channel we offer. Super quick, super easy! </li>
+                    <li><a href="/channels">Click here</a> to check out all of the channels you can access!</li>
+                    <li>Your 30 day free trial has now started! See the 'Account' tab within the plug-in to keep track of this. After your trial is over you will need to move to a paid subscription to keep using the service, keep reading below for more explanation on this.</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1 list-wrapper card">
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul>
+                            <li><span class="glyphicon glyphicon-ok"></span> Access to 200+ channels</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> 14 Netflix countries</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Lightning fast speed</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Unlimited bandwidth </li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Unlimited data transfer</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Private – no logging of browsing activity </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li><span class="glyphicon glyphicon-ok"></span> 24/7 Support</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> No ads</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Open source</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Channel unlock request service</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> 99.9% server uptime</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Moneyback guarantee</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="arrow-lower-wrapper">
+        <p class="arrow">
+            <span class="image" data-section="price"></span>
+        </p>
+    </div>
+
+</section>
+
+<section class="white price">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>A <strong>very</strong> good deal</h1>
+                <div class="line line-center"></div>
+                <p class="subtitle">
+                    We understand changing things isn't always easy, so we've done our best to give you the best introductory offer possible.<br />
+                    At any time during, or for a limited time after, your month's free subscription we are giving you what we think is a mindblowingly incredible deal... of 99 cents a month!<br />
+                    We don't think there's a better price for this kind of service anywhere in the world, but it will only be available for a limited time!
+                </p>
+            </div>
+        </div>
+
+        <div class="row" id="price-list">
+            <div class="col-md-3 col-md-offset-3">
+                <h3>Monthly Subscription</h3>
+                <div class="price-single">
+                    <div class="part currency">$</div>
+                    <div class="part number">0.</div>
+                    <div class="part decimals">99</div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="price-single discounted">
+                    <div class="part currency">$</div>
+                    <div class="part number">1.</div>
+                    <div class="part decimals">95</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h3>Yearly Subscription</h3>
+                <div class="price-single">
+                    <div class="part currency">$</div>
+                    <div class="part number">9.</div>
+                    <div class="part decimals">95</div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="price-single discounted">
+                    <div class="part currency">$</div>
+                    <div class="part number">17.</div>
+                    <div class="part decimals">95</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <p class="subtitle">
+                    To take advantage of the deal,<br />
+                    go to the <a href="/pricing">Pricing</a> page of our new website
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 cta-wrapper">
+                <a href="/" class="btn btn-cta">Got it, Take me to the new website</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

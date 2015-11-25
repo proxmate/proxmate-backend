@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Change Card {% endblock %}
+{% block bodyclass %} post-install {% endblock %}
+
+{% block content %}
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <section class="grey" style="min-height: 500px">
+        <div class="container step2" style="display:none">
+            <h2>Your card has been updated</h2>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                    <p class="feedback">
+                        Thanks for using Proxmate
+                    </p>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="text-center btn-wrapper pricing-plugin-container">
+                <a href="/channels/" class="btn btn-cta">Go to channels</a>
+            </div>
+        </div>
+
+        <div class="container large-image">
+
+        </div>
+
+    </section>
+    <div class="modal fade in transactional-modal" id="unsubscribe-confirm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title emphasize">Confirm Unsubscription</h4>
+                </div>
+                <!-- Just use the modal body you need for your needed transactional message and disregard the others -->
+                <div class="modal-body">
+                    <div class="row feedback">
+                        <div class="text-center row">
+                            Are you sure you want to unsubscribe?
+                        </div>
+                        <br><br>
+
+                        <div class="text-center row">
+                            <a href="#" data-key="{{ unsubscribe_key }}" class="unsubscribe-confirm btn btn-lg btn-cta">
+                                Yes
+                            </a>
+                            <a href="#" data-dismiss="modal" aria-label="Close" class="btn btn-lg btn-cta">
+                                No
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                initChangeCard('{{ api_key }}', function(){
+                    $('.step2').show()
+                })
+            }, 200)
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,11 @@
+django
+Pillow
+python-dateutil
+django-adminplus
+-e git://github.com/mariusionescu/console_admin.git#egg=console_admin
+git+git://github.com/mariusionescu/django-blog.git#egg=django-blog
+stripe
+pytz
+django_user_agents
+elasticsearch
+-e git://github.com/mariusionescu/django-geoaware.git#egg=geoaware
