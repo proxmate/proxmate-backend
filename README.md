@@ -15,13 +15,3 @@ ___
 - `python manage.py runserver`
 
 ___
-
-## Stripe ( API Keys ) Configuration
-
-- `pip install --index-url https://code.stripe.com --upgrade stripe`
-
-- when adding new test / live API keys, add them in `settings.py`, `index.html` and run the following commands in console:
-
-1. `export STRIPE_SECRET_KEY=sk_live_or_test_secret_key`
-2. `export STRIPE_PUBLISHABLE_KEY=pk_live_or_test_publishable_key`
-
